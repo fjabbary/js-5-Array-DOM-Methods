@@ -69,3 +69,7 @@ h3 {
   font-size: 20px;
   margin-bottom: 10px;
 }
+
+.border {
+  border-top: 2px dashed #000;
+}

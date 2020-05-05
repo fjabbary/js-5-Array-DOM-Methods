@@ -41,7 +41,6 @@ async function getRandomUser() {
     }
 
     dataArr.push(newUser)
-    console.log(dataArr)
     updateDOM()
 }
 
@@ -56,4 +55,36 @@ doubleBtn.addEventListener('click', () => {
     })
 
     updateDOM()
+})
+
+showMillionairesBtn.addEventListener('click', () => {
+    const filteredArr = dataArr.filter(item => {
+        return item.money > 1000000
+    })
+
+    dataArr = filteredArr
+    updateDOM();
+})
+
+sortBtn.addEventListener('click', () => {
+    const sortedArr = dataArr.sort((a, b) => {
+        return b.money - a.money
+    })
+
+    dataArr = sortedArr;
+    updateDOM()
+})
+
+calculateWealthBtn.addEventListener('click', () => {
+    let sum = 0;
+    dataArr.forEach(item => {
+        sum += item.money
+    })
+
+    const div = document.createElement('div')
+    div.classList.add('person')
+    div.classList.add('border')
+    div.innerHTML = `<strong>Sum</strong> <b>$${formatMoney(sum)}</b>`
+
+    main.appendChild(div)
 })
